@@ -82,7 +82,5 @@ public class Transporte {
 		setNumeroPassageiros(Integer.parseInt(ent.nextLine()));
 		System.out.println("Digite o preço: ");
 		setPreco(Double.parseDouble(ent.nextLine()));
-		
-		ent.close();
 	}
 }
