@@ -1,13 +1,15 @@
 package biblioteca;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Aviao extends Transporte{
 
-	/* DeclaraÁ„o dos atributos */
+	/* Declara√ß√£o dos atributos */
 	private String prefixo;
 	private String dataRevisao;
 	
-	/* DefiniÁ„o dos mÈtodos */
+	/* Defini√ß√£o dos m√©todos */
 	public String getPrefixo() {
 		return this.prefixo;
 	}
@@ -27,7 +29,7 @@ public class Aviao extends Transporte{
 		super();
 	}
 	
-	/* Construtor com par‚metros chamando a superclasse */
+	/* Construtor com par√¢metros chamando a superclasse */
 	public Aviao(int capacidadeTanque, int numeroPassageiros) {
 		super(capacidadeTanque, numeroPassageiros);
 	}
@@ -54,21 +56,48 @@ public class Aviao extends Transporte{
 		this.dataRevisao = dataRevisao;
 	}
 	
-	/* ExibiÁ„o dos dados cadastrados reaproveitando a superclasse */
+	/* Exibi√ß√£o dos dados cadastrados reaproveitando a superclasse */
 	public void imprimir() {
 		super.imprimir();
 		System.out.println("Prefixo: " + getPrefixo());
-		System.out.println("Data de revis„o: " + getDataRevisao());
+		System.out.println("Data de revis√£o: " + getDataRevisao());
 	}
 	
 	/* Entrada de dados via teclado reaproveitando a superclasse */
 	public void entradaDados() {
-		Scanner ent = new Scanner(System.in);
 		super.entradaDados();
+		Scanner ent = new Scanner(System.in);
 		System.out.println("Digite o prefixo: ");
 		setPrefixo(ent.nextLine());
-		System.out.println("Digite a data de revis„o: ");
+		System.out.println("Digite a data de revis√£o: ");
 		setDataRevisao(ent.nextLine());
-		ent.close();
 	}
+	
+	private static NumberFormat FORMATADOR_PRECO = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+	/* Reajuste de pre√ßo */
+	public void reajustarPreco() {
+		Scanner sc = new Scanner(System.in);
+        boolean auxVerificadora = false;
+        String auxreajustarPreco;
+        float percentual;
+        while (!auxVerificadora){
+            System.out.println("Digite + para acrescimo e - para desconto: ");
+            auxreajustarPreco = sc.nextLine();
+            if(auxreajustarPreco.equals("+")){
+                System.out.println("Digite o % de acrescimo:");
+                percentual = sc.nextFloat()/100;
+                this.setPreco(this.getPreco() + (this.getPreco() * percentual));
+                auxVerificadora = true;
+                System.out.println("Pre√ßo final: " + FORMATADOR_PRECO.format(this.getPreco()));
+            }else if (auxreajustarPreco.equals("-")){
+                System.out.println("Digite o % de desconto:");
+                percentual = sc.nextFloat() / 100;
+                this.setPreco(this.getPreco() - (percentual * this.getPreco()));
+                auxVerificadora = true;
+                System.out.println("Pre√ßo final: " + FORMATADOR_PRECO.format(this.getPreco()));
+            }else{
+                System.out.println("===Op√ß√£o inv√°lida digitada: ");
+            }
+        }
+    }
 }
