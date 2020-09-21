@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Navio extends Transporte {
 
-	/* DeclaraÁ„o dos atributos */
+	/* Declara√ß√£o dos atributos */
 	private String nome;
 	private String dataLancamento;
 	private int numeroTripulantes;
 	
-	/* DefiniÁ„o dos mÈtodos */
+	/* Defini√ß√£o dos m√©todos */
 	public String getNome() {
 		return this.nome;
 	}
@@ -35,7 +35,7 @@ public class Navio extends Transporte {
 		super();
 	}
 
-	/* Construtor com par‚metros chamando a superclasse */
+	/* Construtor com par√¢metros chamando a superclasse */
 	public Navio(int capacidadeTanque, int numeroPassageiros) {
 		super(capacidadeTanque, numeroPassageiros);
 	}
@@ -65,24 +65,24 @@ public class Navio extends Transporte {
 		this.numeroTripulantes = numeroTripulantes;
 	}
 	
-	/* ExibiÁ„o dos dados cadastrados reaproveitando a superclasse */
+	/* Exibi√ß√£o dos dados cadastrados reaproveitando a superclasse */
 	public void imprimir() {
 	super.imprimir();
-	System.out.println("Nome: " + getNome());
-	System.out.println("Data de lanÁamento: " + getDataLancamento());
-	System.out.println("Numero de tripulantes: " + getNumeroTripulantes());
+		System.out.println("Nome: " + getNome());
+		System.out.println("Data de lan√ßamento: " + getDataLancamento());
+		System.out.println("Numero de tripulantes: " + getNumeroTripulantes());
 	}
 	
 	/* Entrada de dados via teclado reaproveitando a superclasse */
 	public void entradaDados() {
-	Scanner ent = new Scanner(System.in);
-	System.out.println("Digite o nome do navio: ");
-	setNome(ent.nextLine());
-	System.out.println("Digite a data de lanÁamento: ");
-	setDataLancamento(ent.nextLine());
-	System.out.println("Digite a quantidade de tripulantes: ");
-	setNumeroTripulantes(Integer.parseInt(ent.nextLine()));
-	ent.close();
+		Scanner ent = new Scanner(System.in);
+		System.out.println("Digite o nome do navio: ");
+		setNome(ent.nextLine());
+		System.out.println("Digite a data de lan√ßamento: ");
+		setDataLancamento(ent.nextLine());
+		System.out.println("Digite a quantidade de tripulantes: ");
+		setNumeroTripulantes(Integer.parseInt(ent.nextLine()));
+		super.entradaDados();
 	}
 
 	/* Quantidade de passageiros por tripulantes */
